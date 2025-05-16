@@ -10,6 +10,7 @@
 
   <script src="stories.js"></script>
   <script>
+    console.log("Number of stories loaded:", stories.length); //newly added
     const list = document.getElementById('story-list');
     stories.forEach(story => {
       const item = document.createElement('li');
