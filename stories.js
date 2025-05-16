@@ -250,6 +250,4 @@ const stories = [
     ],
     moral: "Being kind to others makes the world a happier place."
   }
-
-  
 ];
