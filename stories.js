@@ -253,7 +253,3 @@ const stories = [
 
   
 ];
-
-
-  
-];
