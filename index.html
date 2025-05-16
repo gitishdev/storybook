@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bedtime Storybook</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>🌙 Bedtime Stories</h1>
+  <ul id="story-list"></ul>
+
+  <script src="stories.js"></script>
+  <script>
+    const list = document.getElementById('story-list');
+    stories.forEach(story => {
+      const item = document.createElement('li');
+      item.innerHTML = `
+        <strong>${story.title}</strong>
+        <br>
+        <a href="story.html?id=${story.id}&mode=page">📖 Page-by-page</a> |
+        <a href="story.html?id=${story.id}&mode=full">📚 Full story</a>
+      `;
+      list.appendChild(item);
+    });
+  </script>
+</body>
+</html>
