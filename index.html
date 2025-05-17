@@ -2,22 +2,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Bedtime Stories</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Children's Stories</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Bedtime Storybook</h1>
-  <div class="story-grid" id="story-list"></div>
+  <h1>Children's Stories</h1>
+  <div class="story-grid" id="storyList"></div>
+
   <script src="js/stories.js"></script>
-  <script>
-    const storyList = document.getElementById("story-list");
-    stories.forEach(story => {
-      const storyItem = document.createElement("div");
-      storyItem.className = "story-item";
-      storyItem.innerHTML = `<a href="story.html?id=${story.id}">${story.title}</a>`;
-      storyList.appendChild(storyItem);
-    });
-  </script>
+  <script src="js/script.js"></script>
 </body>
 </html>
