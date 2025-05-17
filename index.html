@@ -1,26 +1,22 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Bedtime Storybook</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>Bedtime Stories</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>🌙 Bedtime Stories</h1>
-  <ul id="story-list"></ul>
-
-  <script src="stories.js"></script>
+  <h1>Bedtime Storybook</h1>
+  <div class="story-grid" id="story-list"></div>
+  <script src="js/stories.js"></script>
   <script>
-    console.log("Number of stories loaded:", stories.length); //newly added
-    const list = document.getElementById('story-list');
+    const storyList = document.getElementById("story-list");
     stories.forEach(story => {
-      const item = document.createElement('li');
-      item.innerHTML = `
-        <strong>${story.title}</strong>
-        <br>
-        <a href="story.html?id=${story.id}&mode=page">📖 Page-by-page</a> |
-        <a href="story.html?id=${story.id}&mode=full">📚 Full story</a>
-      `;
-      list.appendChild(item);
+      const storyItem = document.createElement("div");
+      storyItem.className = "story-item";
+      storyItem.innerHTML = `<a href="story.html?id=${story.id}">${story.title}</a>`;
+      storyList.appendChild(storyItem);
     });
   </script>
 </body>

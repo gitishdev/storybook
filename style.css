@@ -1,0 +1,49 @@
+
+body {
+  font-family: sans-serif;
+  padding: 20px;
+  background: #fef9f1;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+.story-item a {
+  display: block;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 18px;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.story-image {
+  max-width: 100%;
+  border-radius: 10px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+#controls {
+  margin-top: 20px;
+  text-align: center;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+}

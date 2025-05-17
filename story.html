@@ -1,13 +1,61 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Story</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>Story Viewer</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="story-container"></div>
-  <button onclick="goHome()">🏠 Home</button>
-  <script src="stories.js"></script>
-  <script src="script.js"></script>
+  <a href="index.html">← Back to Index</a>
+  <div id="story-content"></div>
+  <div id="controls">
+    <button id="prev">Back</button>
+    <button id="next">Next</button>
+  </div>
+  <script src="js/stories.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const storyId = parseInt(params.get('id'));
+    const story = stories.find(s => s.id === storyId);
+    let currentPage = 0;
+    let moralShown = false;
+
+    const container = document.getElementById("story-content");
+    function renderPage() {
+      container.innerHTML = "";
+      if (currentPage === 0 && story.image) {
+        const img = document.createElement("img");
+        img.src = story.image;
+        img.alt = story.title;
+        img.className = "story-image";
+        container.appendChild(img);
+      }
+
+      if (currentPage < story.pages.length) {
+        const p = document.createElement("p");
+        p.textContent = story.pages[currentPage];
+        container.appendChild(p);
+        moralShown = false;
+      } else if (!moralShown) {
+        const p = document.createElement("p");
+        p.innerHTML = "<strong>Moral:</strong> " + story.moral;
+        container.appendChild(p);
+        moralShown = true;
+      }
+    }
+
+    document.getElementById("prev").addEventListener("click", () => {
+      if (currentPage > 0) currentPage--;
+      renderPage();
+    });
+
+    document.getElementById("next").addEventListener("click", () => {
+      if (currentPage <= story.pages.length) currentPage++;
+      renderPage();
+    });
+
+    renderPage();
+  </script>
 </body>
 </html>
