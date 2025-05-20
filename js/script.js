@@ -1,15 +1,16 @@
 
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("storyList");
-
+document.addEventListener('DOMContentLoaded', () => {
+  const storyList = document.getElementById('storyList');
   stories.forEach(story => {
-    const div = document.createElement("div");
-    div.className = "story-item";
-    div.innerHTML = `
+    const card = document.createElement('div');
+    card.className = 'story-card';
+    card.innerHTML = `
       <h3>${story.title}</h3>
-      <a href="story.html?id=${story.id}&mode=single">Page by Page</a>
-      <a href="story.html?id=${story.id}&mode=full">Full Story</a>
+      <div class="buttons">
+        <a class="button" href="story.html?id=${story.id}&mode=page">Page by Page</a>
+        <a class="button" href="story.html?id=${story.id}&mode=full">Full Story</a>
+      </div>
     `;
-    container.appendChild(div);
+    storyList.appendChild(card);
   });
 });
