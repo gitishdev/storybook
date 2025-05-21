@@ -1,42 +1,23 @@
-
 body {
   font-family: Arial, sans-serif;
+  background-color: white;
   margin: 20px;
-  background: #fce4ec;
-  color: #4a148c;
 }
-h1, h2 {
-  text-align: center;
-}
-.story-grid {
+
+.grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+}
+
+.story-title {
+  margin-bottom: 10px;
+}
+
+.nav-buttons, .view-toggle {
   margin-top: 20px;
 }
-.story-card {
-  background: #fff;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-.story-card h3 {
-  margin: 0 0 10px;
-}
-.buttons {
-  display: flex;
-  justify-content: space-between;
-}
-button, a.button {
-  background-color: #ba68c8;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  text-decoration: none;
-  cursor: pointer;
-}
-img {
-  max-width: 100%;
-  border-radius: 8px;
+
+button {
+  margin-right: 10px;
 }

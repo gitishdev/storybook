@@ -1,22 +1,21 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Story</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Story View</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="story-container">
-    <h2 id="story-title"></h2>
-    <img id="story-image" style="display:none;" />
-    <p id="story-content"></p>
-    <p id="story-moral" style="font-weight:bold;"></p>
-    <div class="buttons">
-      <button id="back-btn">Back</button>
-      <button id="next-btn">Next</button>
-      <a class="button" href="index.html">Main Page</a>
-    </div>
+  <div id="story-container"></div>
+  <div class="nav-buttons">
+    <button id="prev-button">Back</button>
+    <button id="next-button">Next</button>
+  </div>
+  <div class="view-toggle">
+    <button onclick="window.location.href='story.html' + location.search + '&view=full'">Full Story</button>
+    <button onclick="window.location.href='story.html' + location.search.replace('&view=full', '')">Page by Page</button>
+    <button onclick="window.location.href='index.html'">Main Page</button>
   </div>
   <script src="js/stories.js"></script>
   <script src="js/story.js"></script>
