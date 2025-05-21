@@ -1,62 +1,61 @@
+const urlParams = new URLSearchParams(window.location.search);
+const storyId = parseInt(urlParams.get('storyId'), 10);
+const mode = urlParams.get('mode');
+
+const story = stories.find(s => s.id === storyId);
+const container = document.getElementById('storyContainer');
+const nav = document.getElementById('navigationButtons');
 
 let currentPage = 0;
-let currentStory = null;
-let mode = "page";
 
-function getQueryParam(param) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(param);
+function renderPage() {
+    container.innerHTML = `<h2>${story.title}</h2><img src="images/${story.image}" width="200"><p>${story.pages[currentPage]}</p>`;
 }
 
-function renderStory() {
-    const container = document.getElementById("storyContainer");
-    container.innerHTML = "";
-
-    if (mode === "full") {
-        currentStory.content.forEach(line => {
-            const p = document.createElement("p");
-            p.textContent = line;
-            container.appendChild(p);
-        });
-    } else {
-        const p = document.createElement("p");
-        p.textContent = currentStory.content[currentPage];
-        container.appendChild(p);
-    }
+function renderFullStory() {
+    container.innerHTML = `<h2>${story.title}</h2><img src="images/${story.image}" width="200">` +
+        story.pages.map(p => `<p>${p}</p>`).join("") +
+        `<p><strong>Moral:</strong> ${story.moral}</p>`;
+    nav.innerHTML = "";
 }
 
-function previousPage() {
-    if (mode === "page" && currentPage > 0) {
-        currentPage--;
-        renderStory();
-    }
+function setupNavigation() {
+    nav.innerHTML = `
+        <button onclick="goBack()">Back</button>
+        <button onclick="goNext()">Next</button>
+    `;
 }
 
-function nextPage() {
-    if (mode === "page" && currentPage < currentStory.content.length - 1) {
+function goNext() {
+    if (currentPage < story.pages.length - 1) {
         currentPage++;
-        renderStory();
+        renderPage();
+    } else if (currentPage === story.pages.length - 1) {
+        currentPage++;
+        container.innerHTML += `<p><strong>Moral:</strong> ${story.moral}</p>`;
     }
 }
 
-function showFullStory() {
-    window.location.href = `story.html?storyId=${currentStory.id}&mode=full`;
-}
-
-function showPageByPage() {
-    window.location.href = `story.html?storyId=${currentStory.id}&mode=page`;
-}
-
-function goToMainPage() {
-    window.location.href = "index.html";
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    const storyId = parseInt(getQueryParam("storyId"));
-    mode = getQueryParam("mode");
-
-    currentStory = stories.find(s => s.id === storyId);
-    if (currentStory) {
-        renderStory();
+function goBack() {
+    if (currentPage > 0) {
+        currentPage--;
+        renderPage();
     }
-});
+}
+
+function loadFullStory() {
+    location.href = `story.html?storyId=${story.id}&mode=full`;
+}
+
+function loadPageByPage() {
+    location.href = `story.html?storyId=${story.id}&mode=page`;
+}
+
+if (story && container) {
+    if (mode === "full") {
+        renderFullStory();
+    } else {
+        renderPage();
+        setupNavigation();
+    }
+}
