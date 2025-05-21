@@ -1,12 +1,15 @@
-
 body {
     font-family: Arial, sans-serif;
     background-color: white;
     padding: 20px;
 }
-.controls {
-    margin-top: 20px;
-}
-button {
-    margin: 5px;
+
+#storyList > div {
+    display: inline-block;
+    width: 45%;
+    margin: 10px;
+    vertical-align: top;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
 }
