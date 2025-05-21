@@ -16,6 +16,7 @@ const stories = [
   {
     id: 1,
     title: "Coco the Cloud",
+    image: "Cloudinthesky02.jpg", 
     pages: [
       "Once upon a time, a little cloud named Coco floated high above the world.",
       "Coco loved watching children play, birds fly, and flowers bloom.",
@@ -28,6 +29,7 @@ const stories = [
   {
     id: 2,
     title: "Benny the Brave Bunny",
+    image: "Bunny.jpg", 
     pages: [
       "Benny the bunny was afraid of the dark forest near his home.",
       "One day, he heard a tiny voice crying for help from the woods.",
@@ -40,6 +42,7 @@ const stories = [
   {
     id: 3,
     title: "Milo and the Moonlight",
+    image: "MouseMoonlight02.jpg", 
     pages: [
       "Milo the mouse loved to dance in the moonlight every night.",
       "One evening, a cloud covered the moon, and Milo got sad.",
