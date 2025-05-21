@@ -2,6 +2,7 @@ const stories = [
   {
     id: 0,
     title: "The Honest Woodcutter",
+    image: "Woodcutter04.jpg", // <- This is the image filename
     pages: [
       "Once upon a time, a woodcutter was cutting wood by the river.",
       "Suddenly, his axe slipped and fell into the water.",
