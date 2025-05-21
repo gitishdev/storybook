@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,14 +7,11 @@
 </head>
 <body>
     <div id="storyContainer"></div>
-    <div class="controls">
-        <button onclick="previousPage()">Back</button>
-        <button onclick="nextPage()">Next</button>
-    </div>
-    <div class="controls">
-        <button onclick="showFullStory()">Full Story</button>
-        <button onclick="showPageByPage()">Page by Page</button>
-        <button onclick="goToMainPage()">Main Page</button>
+    <div id="navigationButtons"></div>
+    <div style="margin-top: 20px;">
+        <button onclick="loadFullStory()">Full Story</button>
+        <button onclick="loadPageByPage()">Page by Page</button>
+        <button onclick="location.href='index.html'">Main Page</button>
     </div>
     <script src="js/stories.js"></script>
     <script src="js/story.js"></script>
