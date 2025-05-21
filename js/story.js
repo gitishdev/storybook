@@ -1,49 +1,62 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const params = new URLSearchParams(window.location.search);
-  const storyIndex = parseInt(params.get('index'), 10);
-  const viewFull = params.get('view') === 'full';
 
-  const story = stories[storyIndex];
-  const container = document.getElementById('story-container');
-  let currentPage = 0;
+let currentPage = 0;
+let currentStory = null;
+let mode = "page";
 
-  function showPage() {
-    container.innerHTML = '';
-    if (viewFull) {
-      story.pages.forEach(p => {
-        const para = document.createElement('p');
-        para.textContent = p;
-        container.appendChild(para);
-      });
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+function renderStory() {
+    const container = document.getElementById("storyContainer");
+    container.innerHTML = "";
+
+    if (mode === "full") {
+        currentStory.content.forEach(line => {
+            const p = document.createElement("p");
+            p.textContent = line;
+            container.appendChild(p);
+        });
     } else {
-      const para = document.createElement('p');
-      para.textContent = story.pages[currentPage];
-      container.appendChild(para);
+        const p = document.createElement("p");
+        p.textContent = currentStory.content[currentPage];
+        container.appendChild(p);
     }
-  }
+}
 
-  function updateButtons() {
-    document.getElementById('prev-button').disabled = currentPage <= 0;
-    document.getElementById('next-button').disabled = currentPage >= story.pages.length - 1;
-  }
+function previousPage() {
+    if (mode === "page" && currentPage > 0) {
+        currentPage--;
+        renderStory();
+    }
+}
 
-  if (!viewFull) {
-    document.getElementById('prev-button').addEventListener('click', () => {
-      if (currentPage > 0) currentPage--;
-      showPage();
-      updateButtons();
-    });
+function nextPage() {
+    if (mode === "page" && currentPage < currentStory.content.length - 1) {
+        currentPage++;
+        renderStory();
+    }
+}
 
-    document.getElementById('next-button').addEventListener('click', () => {
-      if (currentPage < story.pages.length - 1) currentPage++;
-      showPage();
-      updateButtons();
-    });
-  } else {
-    document.getElementById('prev-button').style.display = 'none';
-    document.getElementById('next-button').style.display = 'none';
-  }
+function showFullStory() {
+    window.location.href = `story.html?storyId=${currentStory.id}&mode=full`;
+}
 
-  showPage();
-  updateButtons();
+function showPageByPage() {
+    window.location.href = `story.html?storyId=${currentStory.id}&mode=page`;
+}
+
+function goToMainPage() {
+    window.location.href = "index.html";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const storyId = parseInt(getQueryParam("storyId"));
+    mode = getQueryParam("mode");
+
+    currentStory = stories.find(s => s.id === storyId);
+    if (currentStory) {
+        renderStory();
+    }
 });
