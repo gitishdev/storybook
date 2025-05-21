@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    console.log("Stories loaded:", stories); // Add this
     const storyList = document.getElementById("storyList");
     if (!storyList) return;
 
